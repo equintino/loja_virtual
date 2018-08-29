@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carousel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+        <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+        <style>
+            #listaProd .carousel-inner{
+                //height: 500px;
+                border: solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="listaProd" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#listaProd" data-slide-to="0" class="active"></li>
+                    <li data-target="#listaProd" data-slide-to="1" ></li>
+                    <li data-target="#listaProd" data-slide-to="2" ></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img class="center-block" src="image/computador.png" alt="" />
+                        <div class="carousel-caption">
+                            Computador
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="center-block" src="image/note.png" alt="" />
+                        <div class="carousel-caption">
+                            Notebook
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="center-block" src="image/monitor.png" alt="" />
+                        <div class="carousel-caption">
+                            Monitor
+                        </div>
+                    </div>
+                    <a href="#listaProd" class="left carousel-control" data-slide="prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                    </a>
+                    <a href="#listaProd" class="right carousel-control" data-slide="next">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </a>
+                </div><!-- carousel-inner -->
+            </div><!-- carousel slide -->
+        </div><!-- contauner -->
+    </body>
+</html>
