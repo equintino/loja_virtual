@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Loja Virtual</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="../web/image/ass_e.ico" />
         <link rel="stylesheet" href="../web/css/bootstrap.min.css">
 
         <!--<link rel="stylesheet" href="../web/css/estilos.css" />-->
@@ -19,8 +20,10 @@
             background: #e7e7e7;
         }
         .logo{
-            float: left;
+            /*float: left;*/
             margin-top: 7px;
+            z-index: 4;
+            position: absolute;
         }
         .entrar{
             float: right;
@@ -60,10 +63,10 @@
         #top{
             width: 100%;
             position: fixed;
-            z-index: 999;
+            z-index: 17;
             background: red;
             right: 0;
-            height: 91px;
+            height: 41px;
         }
         #footer .row{
             padding-left: 100px;
@@ -77,6 +80,9 @@
             }
             #footer .row{
                 padding-left: 0;
+            }
+            #footer_2 ul{
+                display: none;
             }
         }
         @media (max-width: 441px){
@@ -106,6 +112,7 @@
         #menu{
             margin-top: 40px;
             background: #78d571;
+            z-index: 16;
         }
         #menu li a{
             color: white;
@@ -146,6 +153,15 @@
             color: rgba(255, 255, 255, 1);
             text-shadow: 1px 1px 1px gray;    
         }
+        @import url('../web/fonts/handlee-regular.ttf');
+        #home .row{
+            color: darkblue;
+            text-shadow: 1px 1px 1px gray;
+            font-family: 'Handlee', cursive;
+            font-family: 'Arial';
+            text-align: center;
+            padding: 10px 0;
+        }
         /* footer */
         #footer{
             clear: both;
@@ -157,23 +173,7 @@
             top: 110px;
             color: white;
         }
-        #footer_1{
-            height: 190px;
-            width: 1024px;
-            margin: 0 auto;
-            color: white;
-            padding: 50px 0 0 250px;
-        }
-        #footer_1 table th{
-            font-size: 20px;
-            font-family: Arial;
-            width: 250px;
-            text-align: left;
-        }
         #footer_2{
-            /*width: 1024px;
-            margin: 0 auto;
-            color: white;*/
             font-size: 12px;
             font-weight: bolder;
         }
@@ -183,24 +183,15 @@
             margin-top: -10px;
             cursor: pointer;
         }
+        #footer_2 ul li > a{
+            color: white;
+            text-decoration: none;
+        }
         #footer_2 ul li{
             display: inline;
             padding-left: 2px;
         }
         #footer_2 .ass{
-            margin-top: 40px;
-        }
-        #footer_2 table{
-            width: 900px;
-            position: relative;
-            top: 20px;
-            float: left;
-            font-size: 14px;
-            font-weight: bolder;
-        }
-        #footer_2 div.assinatura{
-            float: right;
-            cursor: pointer;
             margin-top: 40px;
         }
     </style>
@@ -211,6 +202,15 @@
                     $(".navbar-toggle").trigger("click");
                 }
             });
+            $("#footer_2 ul li a").click(function(){
+                var menuAtivo=$(this).attr("nome");
+                $(".nav li a").each(function(){
+                    if($(this).attr("href") == menuAtivo){
+                        $(this).trigger("click");
+                    }
+                });
+            });
+            
             $(document).click(function(){
                 //alert($(document).width());
             });
@@ -221,7 +221,7 @@
         <div id="head">
             <div id="top">
                 <div class="logo">
-                    <a href="#"><img src="../web/image/ass.png" height="30" alt=""/></a>
+                    <a href="#"><img src="../web/image/ass_e.png" height="40" alt=""/></a>
                 </div>
                 <div class="carrinho">
                     <span>Carrinho</span>
@@ -257,7 +257,7 @@
                         <li><a href="#acessorio" data-toggle="tab">ACESSÓRIOS</a></li>
                     <!--<ul class="nav navbar-nav navbar-right">-->
                         <li><a href="#somos" data-toggle="tab">QUEM SOMOS</a></li>
-                        <li><a href="#contato" data-toggle="tab">CONTATO</a></li>
+                        <li><a href="#contato" data-toggle="tab">FALE CONOSCO</a></li>
                     </ul>
                     </div><!-- navbar principal -->
                 </div><!-- container -->
@@ -266,52 +266,17 @@
         <div id="content">
         <div class="tab-content">
             <div class="tab-pane active" id="home">
-                <div class="container carousel-fundo">
-                    <div id="main-carousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#main-carousel" data-slide-to="1"></li>
-                            <li data-target="#main-carousel" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active slider">
-                                <div class="carousel-caption">
-                                    <h3>Primeiro Item</h3>
-                                    <p>Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est. </p>
-                                </div>
-                                <span><img class="center-block" src="../web/image/computador.png" alt="Imagem do Primeiro Item" height="190" /></span>
-                            </div>
-                            <div class="item slider">
-                                <div class="carousel-caption">
-                                    <h3>Segundo Item</h3>
-                                    <p>Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est. </p>
-                                </div>
-                                <span><img class="center-block" src="../web/image/note.png" alt="Imagem do Segundo Item" height="190"></span>
-                            </div>
-                            <div class="item slider">
-                                <div class="carousel-caption">
-                                    <h3>Terceiro Item</h3>
-                                    <p>Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est. </p>
-                                </div>
-                                <span><img class="center-block" src="../web/image/monitor.png" alt="Imagem do Terceiro Item" height="190"></span>
-                            </div>
-                            <a class="carousel-control left" href="#main-carousel" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="carousel-control right" href="#main-carousel" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- container -->
+                <?php require_once "../paginas/home.php" ?>
             </div>
             <div class="tab-pane" id="categoria">Conteúdo categoria</div>
             <div class="tab-pane" id="monte">Conteúdo Monte seu PC</div>
             <div class="tab-pane" id="peca">Conteúdo Peças</div>
             <div class="tab-pane" id="acessorio">Conteúdo Acessórios</div>
             <div class="tab-pane" id="somos">Conteúdo Quem Somos</div>
-            <div class="tab-pane" id="contato">Conteúdo Contato</div>
-        </div>
+            <div class="tab-pane" id="contato">
+                <?php require_once "../paginas/contato.php" ?>
+            </div>
+        </div><!-- tab-content -->
         </div><!-- content -->
         <div id="footer">
             <div class="container">
@@ -337,22 +302,21 @@
             <hr>
             <div class="container">
                 <div class="row" id="footer_2">
-                    <div>
-                        <ul>
-                            <li>HOME &nbsp|</li>
-                            <li>CATEGORIA &nbsp|</li>
-                            <li>MONTE SEU PC &nbsp|</li>
-                            <li>PEÇAS &nbsp|</li>
-                            <li>ACESSÓRIOS &nbsp|</li>
-                            <li>FALE CONOSCO</li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li><a href="#head" nome="#home">HOME &nbsp</a>|</li>
+                        <li><a href="#head" nome="#categoria">CATEGORIA &nbsp</a>|</li>
+                        <li><a href="#head" nome="#onta">MONTE SEU PC &nbsp</a>|</li>
+                        <li><a href="#head" nome="#peca">PEÇAS &nbsp</a>|</li>
+                        <li><a href="#head" nome="#acessorio">ACESSÓRIOS &nbsp</a>|</li>
+                        <li><a href="#head" nome="#somos">QUEM SOMOS &nbsp</a>|</li>
+                        <li><a href="#head" nome="#contato">FALE CONOSCO</a></li>
+                    </ul>
                     <div class="col-sm-10">
                         <br>FF.Com Ltda CNPJ 00.000.000/0001-00 Rodovia Art Boi Filho, 00 CEP: 00000-000 Presidente Petrúcio - RJ<br><br>
                         Copyright 2012-2017 www.site.com.br - TODOS OS DIREITOS RESERVADOS. Os preços e condições de pagamento são válidos exclusivamente para compras realizadas via internet e poderão sofrer alteração sem aviso prévio. Em caso de divergência, o preço válido é sempre o do carrinho de compras.
                     </div>
                     <div class="col-sm-2 ass">
-                        <a href="#"><img src="../web/image/ass.png" height="50" alt="" /></a>
+                        <a href="#"><img src="../web/image/ass_d.png" height="50" alt="" /></a>
                     </div>
                 </div><!-- row2 -->
             </div><!-- container2 -->
