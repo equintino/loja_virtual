@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="../web/image/ass_e.ico" />
         <link rel="stylesheet" href="../web/css/bootstrap.min.css">
-
         <!--<link rel="stylesheet" href="../web/css/estilos.css" />-->
         <script src="../web/js/jquery-3.2.1.min.js" type="text/javascript" ></script>
         <script src="../web/js/bootstrap.min.js"></script>
@@ -18,105 +17,6 @@
         }
         body{
             background: #e7e7e7;
-        }
-        .logo{
-            /*float: left;*/
-            margin-top: 7px;
-            z-index: 4;
-            position: absolute;
-        }
-        .entrar{
-            float: right;
-            margin-top: 10px;
-        }
-        .entrar:hover, .carrinho:hover{
-            color: #ccc;
-            text-shadow: 1px 1px 1px black;
-        }
-        .carrinho{
-            float: right; 
-            margin: 10px 15px 10px 3px;
-        }
-        .carrinho .fig2{
-            position: absolute;
-            top: 8px;
-        }
-        .compra{
-            margin-left: 8px;
-        }
-        #top form{
-            float: right;
-            margin-top: 10px;
-        }
-        #top form span{
-            float: right;
-            background: #e7e6e2;
-            padding: 1px 7px;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
-        #top form input{
-            border-radius: 5px 0 0 5px;;
-            border: none;
-            border: 1px solid #ccc;
-        }
-        #top{
-            width: 100%;
-            position: fixed;
-            z-index: 17;
-            background: red;
-            right: 0;
-            height: 41px;
-        }
-        #footer .row{
-            padding-left: 100px;
-        }
-        @media (max-width: 767px){
-            #top form{
-                margin: -1px -7px; 
-            }
-            #footer{
-                text-align: center;
-            }
-            #footer .row{
-                padding-left: 0;
-            }
-            #footer_2 ul{
-                display: none;
-            }
-        }
-        @media (max-width: 441px){
-            #top form input{
-                width: 130px;
-            }
-        }
-        @media (max-width: 445px){
-            #top{
-                height: 65px;
-            }
-            #top form input{
-                width: 190px;
-            }
-            #top form{
-                position: absolute;
-                top: 25px;
-                right: 5px;
-            }
-            #footer{
-                text-align: center;
-            }
-            #footer .row{
-                padding-left: 0;
-            }
-        }
-        #menu{
-            margin-top: 40px;
-            background: #78d571;
-            z-index: 16;
-        }
-        #menu li a{
-            color: white;
-            text-shadow: 2px 2px 1px black;
         }
         #content{
             position: relative;
@@ -134,75 +34,28 @@
             }
         }
         @media (max-width: 445px){
-            #menu{
-                top: 25px;
-            }
             #content{
                 top: 114px;
             }
         }
-        /* slide */
-        .slider{
-            height: 310px;
-            background: rgba(255, 0, 0,0.8);
-        }
-        .entrar, .carrinho{
-            cursor: pointer;
-            font-family: sans;
-            font-weight: bolder;
-            color: rgba(255, 255, 255, 1);
-            text-shadow: 1px 1px 1px gray;    
-        }
-        @import url('../web/fonts/handlee-regular.ttf');
-        #home .row{
-            color: darkblue;
-            text-shadow: 1px 1px 1px gray;
-            font-family: 'Handlee', cursive;
-            font-family: 'Arial';
-            text-align: center;
-            padding: 10px 0;
-        }
-        /* footer */
-        #footer{
-            clear: both;
-            width: 100%;
-            background: #3f3c32;
-            /*height: 450px;*/
-            padding-bottom: 50px;
-            position: relative;
-            top: 110px;
-            color: white;
-        }
-        #footer_2{
-            font-size: 12px;
-            font-weight: bolder;
-        }
-        #footer_2 ul{
-            list-style: none;
-            float: right;
-            margin-top: -10px;
-            cursor: pointer;
-        }
-        #footer_2 ul li > a{
-            color: white;
-            text-decoration: none;
-        }
-        #footer_2 ul li{
-            display: inline;
-            padding-left: 2px;
-        }
-        #footer_2 .ass{
-            margin-top: 40px;
-        }
     </style>
     <script>
+        function detectar_mobile() {
+            var check = false; //wrapper no check
+            (function(a){
+                if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+            return check;
+        }
         $(document).ready(function(){
+            if($(document).width() < 767){
+                $(".navbar-toggle").trigger("click");
+            }
             $(".navbar-nav").on("click", function(){
                 if($(document).width() < 767){
                     $(".navbar-toggle").trigger("click");
                 }
             });
-            $("#footer_2 ul li a").click(function(){
+            $("#footer a").click(function(){
                 var menuAtivo=$(this).attr("nome");
                 $(".nav li a").each(function(){
                     if($(this).attr("href") == menuAtivo){
@@ -210,116 +63,82 @@
                     }
                 });
             });
-            
+            if(detectar_mobile()){
+                if($(document).width() > 630){
+                    $("#top").css("position","relative");
+                    $("#menu").removeClass("navbar-fixed-top");
+                    $("#menu").css("top","-41px");
+                    $("#content").css("top","-61px");
+                }else if(!$("#menu").hasClass("navbar-fixed-top")){
+                    $("#top").css("position","fixed");
+                    $("#menu").addClass("navbar-fixed-top");
+                }
+            }
+            $(window).bind("orientationchange", function(){
+                if(detectar_mobile()){
+                    if($(document).width() < 630){
+                        $("#top").css("position","relative");
+                        $("#menu").removeClass("navbar-fixed-top");
+                        $("#menu").css("top","-41px");
+                        $("#content").css("top","-61px");
+                    }else if(!$("#menu").hasClass("navbar-fixed-top")){
+                        $("#top").css("position","fixed");
+                        $("#menu").addClass("navbar-fixed-top");
+                        $("#menu").css("top","21px");
+                        $("#content").css("top","112px");
+                    }
+                }
+            });
+            var logado = $(".entrar span a").text(login);
+            if($(".entrar span a").text() != "Entrar"){
+                $(".entrar span a").mouseover(function(){
+                    $(this).attr("title","Clique aqui para sair.");
+                    $(this).click(function(){
+                        $(this).attr("data-target","#sair_modal"); 
+                    });
+                });
+            }
             $(document).click(function(){
                 //alert($(document).width());
             });
         });
     </script>
+    <?php
+        @$session_start = session_start();
+        if(!isset($_SESSION['login'])){
+            $login="Entrar";
+        }else{
+            $login=$_SESSION['login'];
+        }
+        echo "<script>var login='$login';</script>";
+    ?>
     </head>
     <body>
         <div id="head">
-            <div id="top">
-                <div class="logo">
-                    <a href="#"><img src="../web/image/ass_e.png" height="40" alt=""/></a>
-                </div>
-                <div class="carrinho">
-                    <span>Carrinho</span>
-                    <img src="../web/image/carrinho.png" alt="" height="20" />
-                    <img class="fig2" src="../web/image/circulo.png" alt="" height="23" />
-                    <span class="compra">0</span>
-                </div><!-- carrinho -->
-                <div class="entrar">
-                    <span>Entrar</span>
-                    <img src="../web/image/homem.png" alt="" height="20"/>
-                </div><!-- entrar -->
-                <form action="#" method="post" id="busca" class="navbar-form">
-                    <input placeholder="  O que você procura?" type="text" name="busca" />
-                    <span><img src="../web/image/lupa.png" alt="" height="17" /></span>
-                </form>
-            </div><!-- top -->
-            <nav id="menu" class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-principal" aria-expanded="true">
-                            <span class="sr-only">Alternar Navegação</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse" id="navbar-principal">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#home" data-toggle="tab">HOME</a></li>
-                        <li><a href="#categoria" data-toggle="tab">CATEGORIA</a></li>
-                        <li><a href="#monte" data-toggle="tab">MONTE SEU PC</a></li>
-                        <li><a href="#peca" data-toggle="tab">PEÇAS</a></li>
-                        <li><a href="#acessorio" data-toggle="tab">ACESSÓRIOS</a></li>
-                    <!--<ul class="nav navbar-nav navbar-right">-->
-                        <li><a href="#somos" data-toggle="tab">QUEM SOMOS</a></li>
-                        <li><a href="#contato" data-toggle="tab">FALE CONOSCO</a></li>
-                    </ul>
-                    </div><!-- navbar principal -->
-                </div><!-- container -->
-            </nav><!-- menu -->
+            <?php require_once "../paginas/topo.php"; ?>
         </div><!-- head -->
         <div id="content">
-        <div class="tab-content">
-            <div class="tab-pane active" id="home">
-                <?php require_once "../paginas/home.php" ?>
-            </div>
-            <div class="tab-pane" id="categoria">Conteúdo categoria</div>
-            <div class="tab-pane" id="monte">Conteúdo Monte seu PC</div>
-            <div class="tab-pane" id="peca">Conteúdo Peças</div>
-            <div class="tab-pane" id="acessorio">Conteúdo Acessórios</div>
-            <div class="tab-pane" id="somos">Conteúdo Quem Somos</div>
-            <div class="tab-pane" id="contato">
-                <?php require_once "../paginas/contato.php" ?>
-            </div>
-        </div><!-- tab-content -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <?php require_once "../paginas/home.php"; ?>
+                </div>
+                <div class="tab-pane" id="categoria">Conteúdo categoria</div>
+                <div class="tab-pane" id="monte">Conteúdo Monte seu PC</div>
+                <div class="tab-pane" id="peca">Conteúdo Peças</div>
+                <div class="tab-pane" id="acessorio">Conteúdo Acessórios</div>
+                <div class="tab-pane" id="somos">
+                    <?php require_once "../paginas/somos.php"; ?>
+                </div>
+                <div class="tab-pane" id="contato">
+                    <?php require_once "../paginas/contato.php"; ?>
+                </div>
+                <div class="tab-pane" id="cadastro">
+                    <?php require_once "../paginas/cadastro.php"; ?>
+                </div>
+            </div><!-- tab-content -->
         </div><!-- content -->
         <div id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4">
-                        <h4>INSTITUCIONAL</h4>
-                        Empresa<br>
-                        Como comprar<br>
-                        Envio<br>
-                        Tempo de Garantia<br>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <h4>CONTATO</h4>
-                            (21)0000-0000<br>
-                            email@email.com<br>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <h4>PAGAMENTO</h4>
-                        <img src="../web/image/boleto.png" alt="" height="25"/> <img src="../web/image/master.png" alt="" height="25"/> <img src="../web/image/visa.png" alt="" height="25"/>
-                    </div>
-                </div>
-            </div><!-- container -->
-            <hr>
-            <div class="container">
-                <div class="row" id="footer_2">
-                    <ul>
-                        <li><a href="#head" nome="#home">HOME &nbsp</a>|</li>
-                        <li><a href="#head" nome="#categoria">CATEGORIA &nbsp</a>|</li>
-                        <li><a href="#head" nome="#onta">MONTE SEU PC &nbsp</a>|</li>
-                        <li><a href="#head" nome="#peca">PEÇAS &nbsp</a>|</li>
-                        <li><a href="#head" nome="#acessorio">ACESSÓRIOS &nbsp</a>|</li>
-                        <li><a href="#head" nome="#somos">QUEM SOMOS &nbsp</a>|</li>
-                        <li><a href="#head" nome="#contato">FALE CONOSCO</a></li>
-                    </ul>
-                    <div class="col-sm-10">
-                        <br>FF.Com Ltda CNPJ 00.000.000/0001-00 Rodovia Art Boi Filho, 00 CEP: 00000-000 Presidente Petrúcio - RJ<br><br>
-                        Copyright 2012-2017 www.site.com.br - TODOS OS DIREITOS RESERVADOS. Os preços e condições de pagamento são válidos exclusivamente para compras realizadas via internet e poderão sofrer alteração sem aviso prévio. Em caso de divergência, o preço válido é sempre o do carrinho de compras.
-                    </div>
-                    <div class="col-sm-2 ass">
-                        <a href="#"><img src="../web/image/ass_d.png" height="50" alt="" /></a>
-                    </div>
-                </div><!-- row2 -->
-            </div><!-- container2 -->
-        </div>
+            <?php require_once "../paginas/footer.php"; ?>
+        </div><!-- footer -->
     </body>
 </html>
