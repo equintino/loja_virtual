@@ -158,7 +158,7 @@
                     <!--<label for="" class='form-label-group'>LOGIN: </label>-->
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-                        <input class="form-control" type="text" name="login" autofocus placeholder="Entre com seu LOGIN"/>
+                        <input class="form-control" type="text" name="login" autofocus placeholder="Entre com seu LOGIN" required/>
                     </div>
                     <!--<label for="" class='form-label-group'>SENHA: </label>-->
                     <div class="input-group">

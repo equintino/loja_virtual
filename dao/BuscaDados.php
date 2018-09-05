@@ -2,7 +2,7 @@
 require_once "../dao/Dao.php";
 
 class BuscaDados extends Dao{
-    public function encontre(CriterioProcura $search){
+    public function encontre(CriterioProcuraPessoa $search){
         $dados = array();
         $sql = $this->getSql($search);
         if(count($this->query($sql)->fetchAll()) > 1){
@@ -16,7 +16,7 @@ class BuscaDados extends Dao{
         }
         return $dados;
     }
-    public function getSql(CriterioProcura $search=null){
+    public function getSql(CriterioProcuraPessoa $search=null){
         $sql = "SELECT * FROM ".$search->getTabela()." WHERE login = '".$search->getLogin()."'";
         return $sql;
     }

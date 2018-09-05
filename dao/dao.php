@@ -1,8 +1,9 @@
 <?php
 require_once "../dao/Config.php";
-require_once "../model/Model.php";
-require_once "../dao/CriterioProcura.php";
+require_once "../classes/Model.php";
+require_once "../dao/CriterioProcuraPessoa.php";
 require_once "../excecao/Excecao.php";
+require_once "../mapping/ModelMapper.php";
 
 class Dao{
     private $db = null;
@@ -10,17 +11,30 @@ class Dao{
     public function __destruct() {
         $this->db = null;
     }
-    public function encontre(CriterioProcura $search){
+    public function encontre(CriterioProcuraPessoa $search){
         $dados = array();
         $sql = $this->getSql($search);
-        if(count($this->query($sql)->fetchAll()) > 1){
-            foreach($this->query($sql)->fetchAll() as $row){
+        $dados = $this->query($sql)->fetchAll();
+        if(count($dados) > 1){
+            foreach($dados as $row){
                 foreach($row as $key => $item){
                     $dados[$row['id']][$key] = $item;
+                    /*$model = new Model();
+                    modelMapper::map($model, $row);
+                    $result[$model->getid()] = $model;*/
                 }
             }
         }else{
-            return $this->query($sql)->fetch();
+            if(count($dados) == 0){
+                return false;
+            }
+            $row=$this->query($sql)->fetch();
+            $model = new Model();
+            $model->setArray($row);
+            $model->setId($row['id']);
+            $model->setCriado($row['criado']);
+            $result[$row['id']] = $model;
+            return $result;
         }
         return $dados;
     }
@@ -61,8 +75,20 @@ class Dao{
         $stmt = $this->getDb()->query($sql);
         return $stmt->fetchAll();
     }
-    private function getSql(CriterioProcura $search=null){
-        $sql = "SELECT * FROM ".$search->getTabela()." WHERE nome like '%".$search->getNome()."%'";
+    private function getSql(CriterioProcuraPessoa $search=null){
+        if($search->getArray()){
+            $sql = "SELECT * FROM ".$search->getTabela()." WHERE ";
+            $x=count($search->getArray());
+            foreach($search->getArray() as $key => $value){
+                if($x-- > 1){
+                    $sql .= "$key = '$value' AND ";
+                }else{
+                    $sql .= "$key = '$value'";
+                }
+            }
+            return $sql;
+        }
+        $sql = "SELECT * FROM ".$search->getTabela()." WHERE cpf = ".$search->getCpf();
         return $sql;
     }
     private function insert(Model $model){
@@ -74,11 +100,22 @@ class Dao{
             $values .= "'$value' ,";
         }
         $sql = "INSERT INTO `".$model->getTabela()."` (`id`,`criado`, $cols `excluido`) VALUES (null,'".$model->getCriado()."', $values '0')";
-        print_r($sql);
         $this->criaTabela($model);
         return $this->execute($sql, $model);
     }
     private function update(Model $model){
+        date_default_timezone_set("America/Sao_Paulo");
+        $model->setModificado(date('Y-m-d H:i:s'));
+        $cols=$values=null;
+        $sql = "UPDATE `".$model->getTabela()."` SET ";
+        foreach($this->getParams($model) as $col => $value){
+            if($col != ":criado" && $col != ":modificado"){
+                $sql .= str_replace(":","`",$col).'` = ';
+                $sql .= "'$value' ,";
+            }
+        }
+        $sql .= "`modificado` = '".$model->getModificado()."'   WHERE id = ".$model->getId();
+        
         return $this->execute($sql, $model);
     }
     private function execute($sql,Model $model=null){
@@ -98,7 +135,7 @@ class Dao{
     private function criaTabela(Model $model){
         $sql = "CREATE TABLE IF NOT EXISTS `".$model->getTabela()."` ( `id` INT(5) NOT NULL AUTO_INCREMENT , `criado` datetime NOT NULL,`modificado` datetime NULL,";
         foreach($model->getArray() as $col => $value){
-            if($col != 'login' && $col != 'nome'){
+            if($col != 'login' && $col != 'cpf'){
                 $sql .= "`$col` varchar(100) NULL, ";
             }else{
                 $sql .= "`$col` varchar(100) NULL UNIQUE, ";

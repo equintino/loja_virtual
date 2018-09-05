@@ -1,8 +1,10 @@
 <?php
-class CriterioProcura {
+class CriterioProcuraPessoa {
     private $tabela;
     private $login;
     private $nome;
+    private $cpf;
+    private $array;
     
     public function setTabela($tb){
         $this->tabela=$tb;
@@ -21,5 +23,17 @@ class CriterioProcura {
     }
     public function getNome(){
         return $this->nome;
+    }
+    public function setCpf($cpf){
+        $this->cpf=$cpf;
+    }
+    public function getCpf(){
+        return $this->cpf;
+    }
+    public function setArray(array $array){
+        $this->array=$array;
+    }
+    public function getArray(){
+        return $this->array;
     }
 }

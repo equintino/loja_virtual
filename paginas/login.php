@@ -1,38 +1,18 @@
 <meta charset='utf-8' />
-<?php 
-require_once "../dao/Dao.php";
-require_once "../dao/CriterioProcura.php";
-require_once "../dao/BuscaDados.php";
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="../web/css/bootstrap.min.css" />
+<style>
+    h2{
+        text-align: center;
+    }
+    button{
+        float: right;
+        margin-top: 15px;
+    }
+</style>
+<?php
+require_once "../classes/login.php";
 
-class Login{
-    private $login;
-    private $senha;
-    
-    public function __construct() {
-    }
-    public function setLogin($lg){
-        $dao = new BuscaDados();
-        $search = new CriterioProcura();
-        $search->setTabela("tb_usuario");
-        $search->setLogin($lg);
-        $dados = $dao->encontre($search);
-        if($dados){
-            $this->login=$lg;
-            $this->setSenha($dados['senha']);
-        }else{
-            $this->login=null;
-        }
-    }
-    public function getLogin(){
-        return $this->login;
-    }
-    public function setSenha($senha){
-        $this->senha=$senha;
-    }
-    public function getSenha(){
-        return $this->senha;
-    }
-}
 session_start();
 if(!array_key_exists("sair",$_POST)){
     $login = new Login();
@@ -42,7 +22,10 @@ if(!array_key_exists("sair",$_POST)){
         header("Location:../web");
     }else{
         session_destroy();
-        echo "Usuário ou senha não confere.";
+        echo "<div class='alert alert-danger'>";
+        echo "<h2>LOGIN ou SENHA não confere.</h2>";
+        echo "<button class='btn btn-danger' onclick='history.go(-1)'>Voltar</button>";
+        echo "</div>";
     }
 }else{
     $_SESSION['login']=null;

@@ -19,22 +19,45 @@
     .form-horizontal{
         padding: 0 20px;
     }
+    .msg h3{
+        text-shadow: 1px 1px 1px gray;
+    }
+    .msg img{
+        position: relative;
+        float: right;
+        top: 10px;
+        right: 70px;
+        bottom: 2px;
+    }
+    @media (max-width: 768px){
+        .msg img{
+            top: 0;
+            padding-bottom: 30px;
+        }
+    }
 </style>
 <div class="container cadastro">
+    <?php if($origem != "login"): ?>
     <h2>Cadastro Pessoal</h2>
     <form action="../paginas/add.php" method="post">
     <div class="form-horizontal">
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <div class="form-group">
                 <label for="nome" class="control-label">Nome:</label>
                 <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome completo" style="width: 100%" autofocus/>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="nascimento" class="control-label">Data Nascimento:</label>
                     <input id="nascimento" class="form-control" type="text" name="nascimento" placeholder="dd/mm/aaaa" style="width: 100%" />
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="cpf" class="control-label">CPF:</label>
+                    <input id="cpf" class="form-control" type="text" name="cpf" placeholder="Somente números" style="width: 100%" required/>
                 </div>
             </div>
         </div>
@@ -95,4 +118,35 @@
         </div>
     </div>
     </form>
+    <?php else: ?>
+    <?php $confirma=array_key_exists("conf",$_GET)?$_GET['conf']:null; ?>
+    <h2>Login de Acesso</h2>
+    <form action="../paginas/add.php" method="post">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="login">Login:</label>
+                <input type="text" class="form-control" name="login" id="login" placeholder="Login"/>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" placeholder="password" name="senha" class="form-control"/>
+                <label for="senha2">Confirmar Senha:</label>
+                <input type="password" id="senha" placeholder="confirme password" name="senha2" class="form-control"/>
+                <label for="email">email:</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail" name="email" class="form-control"/>
+                <div class="botao">
+                <button class="btn btn-danger">Enviar</button>
+                </div>
+            </div>
+            <div class="col-sm-6 msg">
+                <h3>
+                    Com o Login de acesso você poderá realizar suas compras com segurança.
+                </h3>
+                <img src="../web/image/cadeado.png" alt="" height="100"/>
+            </div>
+        </div>
+    </div>
+        <input type="hidden" name="origem" value="login" />
+        <input type="hidden" name="confirma" value="<?= $confirma ?>" />
+    </form>
+    <?php endif; ?>
 </div>

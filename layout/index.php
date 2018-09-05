@@ -98,24 +98,32 @@
                     });
                 });
             }
+            if(origem=="login"){
+                $(".tab-content div[id=home]").removeClass("active");
+                $(".tab-content div[id=cadastro]").addClass("active");
+                /*$(".tab-content div").each(function(){
+                    alert($(this).attr("id"));
+                });*/
+            }
             $(document).click(function(){
                 //alert($(document).width());
             });
         });
     </script>
     <?php
+        $origem = array_key_exists("origem",$_GET)?$_GET['origem']:null;
         @$session_start = session_start();
         if(!isset($_SESSION['login'])){
             $login="Entrar";
         }else{
             $login=$_SESSION['login'];
         }
-        echo "<script>var login='$login';</script>";
+        echo "<script>var login='$login';var origem='$origem';</script>";
     ?>
     </head>
     <body>
         <div id="head">
-            <?php require_once "../paginas/topo.php"; ?>
+            <?php require_once "../layout/topo.php"; ?>
         </div><!-- head -->
         <div id="content">
             <div class="tab-content">
@@ -138,7 +146,7 @@
             </div><!-- tab-content -->
         </div><!-- content -->
         <div id="footer">
-            <?php require_once "../paginas/footer.php"; ?>
+            <?php require_once "../layout/footer.php"; ?>
         </div><!-- footer -->
     </body>
 </html>

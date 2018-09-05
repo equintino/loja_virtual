@@ -3,6 +3,7 @@ class Model{
     public $id;
     public $tabela;
     public $criado;
+    private $modificado;
     public $array;
     
     public function setId($id){
@@ -22,6 +23,12 @@ class Model{
     }
     public function getCriado(){
         return $this->criado;
+    }
+    public function setModificado($md){
+        $this->modificado=$md;
+    }
+    public function getModificado(){
+        return $this->modificado;
     }
     public function setArray(array $array){
         $this->array=$array;
