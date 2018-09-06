@@ -88,7 +88,7 @@
         </ul>
         <div class="col-sm-10">
             <br>FF.Com Ltda CNPJ 00.000.000/0001-00 Rodovia Art Boi Filho, 00 CEP: 00000-000 Presidente Petrúcio - RJ<br><br>
-            Copyright 2012-2017 www.site.com.br - TODOS OS DIREITOS RESERVADOS. Os preços e condições de pagamento são válidos exclusivamente para compras realizadas via internet e poderão sofrer alteração sem aviso prévio. Em caso de divergência, o preço válido é sempre o do carrinho de compras.
+            <span>&reg</span> Copyright 2012-2017 www.site.com.br - TODOS OS DIREITOS RESERVADOS. Os preços e condições de pagamento são válidos exclusivamente para compras realizadas via internet e poderão sofrer alteração sem aviso prévio. Em caso de divergência, o preço válido é sempre o do carrinho de compras.
         </div>
         <div class="col-sm-2 ass">
             <a href="#"><img src="../web/image/ass_d.png" height="50" alt="" /></a>

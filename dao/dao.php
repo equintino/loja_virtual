@@ -1,7 +1,7 @@
 <?php
 require_once "../dao/Config.php";
 require_once "../classes/Model.php";
-require_once "../dao/CriterioProcuraPessoa.php";
+//require_once "../dao/CriterioProcuraPessoa.php";
 require_once "../excecao/Excecao.php";
 require_once "../mapping/ModelMapper.php";
 
