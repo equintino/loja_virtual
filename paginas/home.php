@@ -14,7 +14,7 @@
         padding: 10px 0;
     }
     #galeria{
-        margin: 30px 0 0 40px;
+        margin: 20px 0 0 35px;
     }
     #galeria #primeira > div, #galeria #segunda > div{
         margin-left: 20px;
@@ -125,36 +125,40 @@
 <?php  
     require_once "../classes/Produto.php";
     require_once "../classes/Galeria.php";
+    require_once "../classes/Vitrine.php";
+    
+    $vitrine = new Vitrine("Computador", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/computador.png");
+    $lista[]=$vitrine;
+    $vitrine = new Vitrine("Monitor", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/monitor.png");
+    $lista[]=$vitrine;
+    $vitrine = new Vitrine("Notebook", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/note.png");
+    $lista[]=$vitrine;
+    $vitrine = new Vitrine("Cadeado", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/cadeado.png");
+    $lista[]=$vitrine;
+    $vitrine = new Vitrine("Carrinho", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/carrinho.png");
+    $lista[]=$vitrine;
+    $vitrine = new Vitrine("Quebra Cabeça", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/fig2.png");
+    $lista[]=$vitrine;
+    $vitrine = new Vitrine("Gamer", "Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est.", "../web/image/galeria.png");
+    $lista[]=$vitrine;
 ?>
 <div class="container carousel-fundo">
     <div id="main-carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#main-carousel" data-slide-to="1"></li>
-            <li data-target="#main-carousel" data-slide-to="2"></li>
+            <?php for($x=0;$x<count($lista);$x++): ?>
+            <?php echo ($x==0)?'<li data-target="#main-carousel" data-slide-to="'.$x.'" class="active"></li>':'<li data-target="#main-carousel" data-slide-to="'.$x.'"></li>';
+            endfor; ?>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="item active slider">
+            <?php for($x=0;$x<count($lista);$x++): ?>
+            <?php echo ($x==0)?'<div class="item slider active">':'<div class="item slider">'; ?>
                 <div class="carousel-caption">
-                    <h3>Primeiro Item</h3>
-                    <p>Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est. </p>
+                    <h3><?= $lista[$x]->getTitulo() ?></h3>
+                    <p><?= $lista[$x]->getTexto() ?></p>
                 </div>
-                <span><img class="center-block" src="../web/image/computador.png" alt="Imagem do Primeiro Item" height="190" /></span>
+                <span><img class="center-block" src="<?= $lista[$x]->getImagem() ?>" alt="<?= $lista[$x]->getTitulo() ?>" height="190" /></span>
             </div>
-            <div class="item slider">
-                <div class="carousel-caption">
-                    <h3>Segundo Item</h3>
-                    <p>Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est. </p>
-                </div>
-                <span><img class="center-block" src="../web/image/note.png" alt="Imagem do Segundo Item" height="190"></span>
-            </div>
-            <div class="item slider">
-                <div class="carousel-caption">
-                    <h3>Terceiro Item</h3>
-                    <p>Lorem ipsum dolor sit amet, Curabitur ac sagittis neque, vel egestas est. </p>
-                </div>
-                <span><img class="center-block" src="../web/image/monitor.png" alt="Imagem do Terceiro Item" height="190"></span>
-            </div>
+            <?php endfor; ?>
             <a class="carousel-control left" href="#main-carousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
