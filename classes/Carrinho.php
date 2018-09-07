@@ -1,23 +1,21 @@
 <?php
 class Carrinho {
-    private $codProduto;
-    private $valorUnitario;
+    private $comprador;
+    private $produtos;
     private $quantidade;
     private $valorTotal;
-    private $descricao;
     
-    public function __construct($codProduto, $valorUnitario, $quantidade, $valorTotal, $descricao) {
-        $this->codProduto = $codProduto;
-        $this->valorUnitario = $valorUnitario;
-        $this->quantidade = $quantidade;
-        $this->valorTotal = $valorTotal;
-        $this->descricao = $descricao;
+    public function __construct(Comprador $comprador) {
+        $this->comprador=$comprador;
+        $this->produtos=array();
+        $this->valorTotal = 0;
     }
-    public function getCodProduto() {
-        return $this->codProduto;
+    public function maisUm($vlr){
+        $this->setValorTotal($this->getValorTotal() + $vlr);
+        $this->setQuantidade($this->getQuantidade()+1);
     }
-    public function getValorUnitario() {
-        return $this->valorUnitario;
+    public function calcTotal(){
+        
     }
     public function getQuantidade() {
         return $this->quantidade;
@@ -25,22 +23,21 @@ class Carrinho {
     public function getValorTotal() {
         return $this->valorTotal;
     }
-    public function getDescricao() {
-        return $this->descricao;
+    private function setQuantidade($qt) {
+        $this->quantidade=$qt;
     }
-    public function setCodProduto($codProduto) {
-        $this->codProduto = $codProduto;
+    private function setValorTotal($vlr) {
+        $this->valorTotal = $vlr;
     }
-    public function setValorUnitario($valorUnitario) {
-        $this->valorUnitario = $valorUnitario;
+    public function getProdutos(){
+        return $this->produtos;
     }
-    public function setQuantidade($quantidade) {
-        $this->quantidade = $quantidade;
+    public function setProdutos(Produto $produto){
+        $this->produtos[]=$produto;
+        $this->setValorTotal($this->getValorTotal()+$produto->getValorUnitario());
+        $this->setQuantidade(count($this->produtos));
     }
-    public function setValorTotal($valorTotal) {
-        $this->valorTotal = $valorTotal;
-    }
-    public function setDescricao($descricao) {
-        $this->descricao = $descricao;
+    public function __toString() {
+        echo $this->comprador;
     }
 }

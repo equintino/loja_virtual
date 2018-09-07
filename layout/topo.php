@@ -55,7 +55,7 @@
     #top form span{
         float: right;
         background: #e7e6e2;
-        padding: 1px 7px;
+        padding: 2px 7px 3px 7px;
         border-radius: 0 5px 5px 0;
         cursor: pointer;
     }
@@ -125,7 +125,7 @@
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-principal" aria-expanded="true">
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-principal" aria-expanded="false" >
                 <span class="sr-only">Alternar Navegação</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

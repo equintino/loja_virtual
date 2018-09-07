@@ -2,7 +2,7 @@
     #galeria{
         margin: 30px 0 0 40px;
     }
-    #galeria #primeira .um, #galeria #primeira .dois, #galeria #primeira .tres, #galeria #primeira .quatro, #galeria #segunda .um, #galeria #segunda .dois, #galeria #segunda .tres, #galeria #segunda .quatro{
+    #galeria #primeira > div, #galeria #segunda > div{
         margin-left: 20px;
         border-radius: 5px;
         border: 1px solid gray;
@@ -22,11 +22,13 @@
         text-align: left;
         text-shadow: none;
     }
-    #galeria span.preco{
-        margin-left: -35px;
+    #galeria div.preco{
+        margin-left: 10px;
         color: green;
         font-size: 20px;
         font-weight: bolder;
+        width: 100%;
+        text-align: left;
     }
     @font-face{
         font-family: "compacta-bt";
@@ -60,25 +62,17 @@
     }
     @media (max-width: 991px){
         #galeria{
-            margin: 30px 0 0 30px;
+            margin: 30px;
         }
         #galeria #primeira .quatro, #galeria #segunda .quatro{
             margin-top: 20px;
         }
     }
-    @media (max-width: 747px){
-        #galeria{
-            margin: 30px 0 0 30px;
-        }
-        #galeria #primeira .quatro, #galeria #segunda .quatro{
-            margin-top: 20px;
-        }
-    }
-    @media (max-width: 703px){
+    @media (max-width: 733px){
         #galeria{
             margin: 30px 0 0 0px;
         }
-        #galeria #primeira .um, #galeria #primeira .dois, #galeria #primeira .tres, #galeria #primeira .quatro, #galeria #segunda .um, #galeria #segunda .dois, #galeria #segunda .tres, #galeria #segunda .quatro{
+        #galeria #primeira > div, #galeria #segunda > div{
             margin-left: 10px;
             width: 190px;
         }
@@ -93,7 +87,7 @@
         }
     }
     @media (width:360px){ 
-        #galeria #primeira .um, #galeria #primeira .dois, #galeria #primeira .tres, #galeria #primeira .quatro, #galeria #segunda .um, #galeria #segunda .dois, #galeria #segunda .tres, #galeria #segunda .quatro{
+        #galeria #primeira > div, #galeria #segunda > div{
            margin-top: 20px; 
         }
         #galeria{
@@ -114,97 +108,43 @@
         cursor: pointer;
     }
 </style>
+<?php 
+    $descricao = "<p>Intel i3 7100 3.9GHZ /</br>
+                8GB DDR4 / HD 1TB /<br>
+                Combo Teclado + Headset</p>";
+    $vitrine = new Produto("0001", 2000, $descricao);
+    $vitrine->setImagem('../web/image/galeria.png');
+    
+    $gal='<div class="col-md-3 col-sm-4 col-xs-12">
+             <span class="prod"><img src="'.$vitrine->getImagem().'" alt="" /></span>
+             <div class="descricao" codProd='.$vitrine->getCodProduto().'>'.$vitrine->getDescricao().'</div>
+             <div class="preco">R$ '.number_format($vitrine->getValorUnitario(),'2',',','.').'</div>
+             <div class="ticket">COMPRAR</div>
+             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
+        </div>';
+    $gal_4='<div class="col-md-3 col-sm-4 col-xs-12 quatro">
+             <span class="prod"><img src="'.$vitrine->getImagem().'" alt="" /></span>
+             <div class="descricao" codProd='.$vitrine->getCodProduto().'>'.$vitrine->getDescricao().'</div>
+             <div class="preco">R$ '.number_format($vitrine->getValorUnitario(),'2',',','.').'</div>
+             <div class="ticket">COMPRAR</div>
+             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
+        </div>';
+?>
 <div id="galeria">
     <div id="primeira" class="row">
-        <div class="col-md-3 col-sm-4 col-xs-12 um">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /</br>
-                8GB DDR4 / HD 1TB /<br>
-                >Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal1 -->
-        <div class="col-md-3 col-sm-4 col-xs-12 dois">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal2 -->
-        <div class="col-md-3 col-sm-4 col-xs-12 tres">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal3 -->
-        <div class="col-md-3 col-sm-4 col-xs-12 quatro">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal4 -->
+        <?php 
+            for($x=0;$x < 3;$x++){
+                echo $gal;
+            }
+            echo $gal_4;
+        ?>
     </div><!-- id_primeira -->
     <div id="segunda" class="row">
-         <div class="col-md-3 col-sm-4 col-xs-12 um">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-         </div><!-- gal1 -->
-        <div class="col-md-3 col-sm-4 col-xs-12 dois">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal2 -->
-        <div class="col-md-3 col-sm-4 col-xs-12 tres">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal3 -->
-        <div class="col-md-3 col-sm-4 col-xs-12 quatro">
-             <span class="prod"><img src="../web/image/galeria.png" alt="" /></span>
-             <div class="descricao">
-                <p>Intel i3 7100 3.9GHZ /<br>
-                8GB DDR4 / HD 1TB /<br>
-                Combo Teclado + Headset</p>
-             </div>
-             <span class="preco">R$ 2.000,00</span>
-             <div class="ticket">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26"/></span>
-        </div><!-- gal4 -->
+        <?php 
+            for($x=0;$x < 3;$x++){
+                echo $gal;
+            }
+            echo $gal_4;
+        ?>
     </div><!-- id_segunda -->
 </div><!-- galeria -->

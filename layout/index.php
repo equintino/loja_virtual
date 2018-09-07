@@ -89,6 +89,7 @@
                 }
             });
             var logado = $(".entrar span a").text(login);
+            var qtdCompra = $("span.compra").text(compra);
             if($(".entrar span a").text() != "Entrar"){
                 $(".entrar span a").mouseover(function(){
                     $(this).attr("title","Clique aqui para sair.");

@@ -34,4 +34,7 @@ class Comprador {
     public function setCartao($cartao) {
         $this->cartao = $cartao;
     }
+    public function __toString() {
+        echo "Nome: ".$this->getNome()."<br>CPF: ".$this->getCpf()."<br>Login: ".$this->getLogin()."<br>Cartão: ".$this->getCartao();
+    }
 }

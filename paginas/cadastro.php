@@ -36,8 +36,13 @@
         }
     }
 </style>
+<?php
+    $origem = array_key_exists("origem",$_GET)?$_GET['origem']:null;
+    $login=Valida::getLogin();
+?>
+<script>var login="<?= $login ?>";var origem="<?= $origem ?>"</script>
 <div class="container cadastro">
-    <?php if($origem != "login"): ?>
+    <?php if(!isset($_GET['origem'])): ?>
     <h2>Cadastro Pessoal</h2>
     <form action="../paginas/add.php" method="post">
     <div class="form-horizontal">
