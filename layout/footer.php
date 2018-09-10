@@ -5,7 +5,7 @@
             <h4>INSTITUCIONAL</h4>
             <a href="#head" nome="#somos">Empresa</a><br>
             Como comprar<br>
-            Envio<br>
+            <a href="#head" nome="">Envio</a><br>
             Tempo de Garantia<br>
         </div>
         <div class="col-xs-12 col-sm-4">

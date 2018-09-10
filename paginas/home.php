@@ -1,4 +1,14 @@
 <link rel="stylesheet" type="text/css" href="../web/css/home.css" />
+<script>
+    $(document).ready(function(){
+        $("#galeria .gal").click(function(){
+            var texto=$(this).text();
+            $("#prodModal").on("shown.bs.modal",function(){
+                $(".confCompra").text(texto);
+            });
+        });
+    });
+</script>
 <?php
     $dao = new DaoVitrine();
     $search = new CriterioProcura();
@@ -62,4 +72,19 @@
             ?>
         </div><!-- id_primeira -->
     </div><!-- galeria -->
+    <div id="prodModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-md modal-content">
+                <div class="modal-header" style="background:red">
+                    <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+                    <div class="modal-title"><h3>Confirma a compra abaixo?</h3></div>
+                </div>
+                <div class="modal-body confCompra"></div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-secondary" data-dismiss="modal">NÃO</button>
+                    <button class="btn btn-danger btn-primary" data-dismiss="modal">SIM</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- container carousel -->

@@ -40,4 +40,10 @@ class Carrinho {
     public function __toString() {
         echo $this->comprador;
     }
+    public function getComprador() {
+        return $this->comprador;
+    }
+    public function setComprador($comprador) {
+        $this->comprador = $comprador;
+    }
 }

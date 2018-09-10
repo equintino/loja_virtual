@@ -15,7 +15,7 @@
 #galeria{
     margin: 20px 0 0 35px;
 }
-#galeria #primeira > div, #galeria #segunda > div{
+#galeria #primeira > div{
     margin: 20px 0 0 20px;
     border-radius: 5px;
     border: 1px solid gray;

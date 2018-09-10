@@ -41,7 +41,6 @@
             <li><a href="#monte" data-toggle="tab">MONTE SEU PC</a></li>
             <li><a href="#peca" data-toggle="tab">PEÇAS</a></li>
             <li><a href="#acessorio" data-toggle="tab">ACESSÓRIOS</a></li>
-        <!--<ul class="nav navbar-nav navbar-right">-->
             <li><a href="#somos" data-toggle="tab">QUEM SOMOS</a></li>
             <li><a href="#contato" data-toggle="tab">FALE CONOSCO</a></li>
         </ul>
@@ -57,12 +56,10 @@
                     <h4 class="modal-title">Bem Vindo</h4>
                 </div>
                 <div class="modal-body">
-                    <!--<label for="" class='form-label-group'>LOGIN: </label>-->
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
                         <input class="form-control" type="text" name="login" autofocus placeholder="Entre com seu LOGIN" required/>
                     </div>
-                    <!--<label for="" class='form-label-group'>SENHA: </label>-->
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input class="form-control" type="password" name="senha" placeholder="Digite sua SENHA"/>

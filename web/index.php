@@ -18,7 +18,6 @@ $search->setTabela("tb_usuario");
 $search->setArray(array("login"=>Valida::start()));
 if($dados=$dao->encontre($search)){
     $key=each($dados)['key'];
-    //$comprador = new Comprador($dados[$key]->getArray()['nome'], $dados[$key]->getArray()['login'], $dados[$key]->getArray()['cpf']);
     $comprador = new Comprador($dados[$key]['nome'], $dados[$key]['login'], $dados[$key]['cpf']);
 
     /* Produtos */
@@ -32,8 +31,9 @@ if($dados=$dao->encontre($search)){
     $carrinho->setProdutos($produto2);
     $carrinho->setProdutos($produto3);
 }
-/* Carrega a página */    
+/* Carrega a página */   
+$carrinho=isset($carrinho)?$carrinho:null;
 $qtd = isset($carrinho)?$carrinho->getQuantidade():0;
-$index = new index();
+$index = new index($carrinho);
 $index->setQtd($qtd);
 $index->carrega(); 
