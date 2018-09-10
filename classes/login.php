@@ -1,8 +1,4 @@
 <?php 
-require_once "../dao/Dao.php";
-require_once "../dao/CriterioProcuraPessoa.php";
-require_once "../dao/BuscaDados.php";
-
 class Login{
     private $login;
     private $senha;
@@ -11,7 +7,7 @@ class Login{
     }
     public function setLogin($lg){
         $dao = new BuscaDados();
-        $search = new CriterioProcuraPessoa();
+        $search = new CriterioProcura();
         $search->setTabela("tb_usuario");
         $search->setLogin($lg);
         $dados = $dao->encontre($search);

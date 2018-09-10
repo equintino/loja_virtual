@@ -4,17 +4,22 @@ require_once "../classes/Index.php";
 require_once "../classes/Comprador.php";
 require_once "../classes/Carrinho.php";
 require_once "../classes/Produto.php";
+require_once "../classes/Galeria.php";
+require_once "../classes/Vitrine.php";
 require_once "../dao/Dao.php";
-require_once "../dao/CriterioProcuraPessoa.php";
+require_once "../dao/DaoVitrine.php";
+require_once "../dao/CriterioProcura.php";
  
 /* Dados do Comprador(nome/login/cpf) "$comprador" */
 $dao = new Dao();
-$search = new CriterioProcuraPessoa();
+
+$search = new CriterioProcura();
 $search->setTabela("tb_usuario");
 $search->setArray(array("login"=>Valida::start()));
 if($dados=$dao->encontre($search)){
     $key=each($dados)['key'];
-    $comprador = new Comprador($dados[$key]->getArray()['nome'], $dados[$key]->getArray()['login'], $dados[$key]->getArray()['cpf']);
+    //$comprador = new Comprador($dados[$key]->getArray()['nome'], $dados[$key]->getArray()['login'], $dados[$key]->getArray()['cpf']);
+    $comprador = new Comprador($dados[$key]['nome'], $dados[$key]['login'], $dados[$key]['cpf']);
 
     /* Produtos */
     $produto1 = new Produto("0001",3.50,"fone de ouvido");

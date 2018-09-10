@@ -1,108 +1,11 @@
-<style>
-    /* Carrinho de compra */
-    .logo{
-        margin-top: 7px;
-        z-index: 4;
-        position: absolute;
-    }
-    .entrar{
-        float: right;
-        margin-top: 10px;
-    }
-    .entrar, .carrinho{
-        cursor: pointer;
-        font-family: sans;
-        font-weight: bolder;
-        color: rgba(255, 255, 255, 1);
-        text-shadow: 1px 1px 1px gray;    
-    }
-    .entrar:hover, .carrinho:hover{
-        color: #ccc;
-        text-shadow: 1px 1px 1px black;
-    }
-    .entrar span a{
-        color: white;
-    }
-    /* modal */
-    .modal-header{
-        background: blue;
-        color: white;
-    }
-    /* carrinho */
-    .carrinho{
-        float: right; 
-        margin: 10px 15px 10px 3px;
-    }
-    .carrinho .fig2{
-        position: absolute;
-        top: 8px;
-    }
-    .compra{
-        margin-left: 8px;
-    }
-    #top{
-        width: 100%;
-        position: fixed;
-        z-index: 17;
-        background: red;
-        right: 0;
-        height: 41px;
-    }
-    #top form{
-        float: right;
-        margin-top: 10px;
-    }
-    #top form span{
-        float: right;
-        background: #e7e6e2;
-        padding: 2px 7px 3px 7px;
-        border-radius: 0 5px 5px 0;
-        cursor: pointer;
-    }
-    #top form input{
-        border-radius: 5px 0 0 5px;;
-        border: none;
-        border: 1px solid #ccc;
-    }
-    @media (max-width: 767px){
-        #top form{
-            margin: -1px -7px; 
-        }
-    }
-    @media (max-width: 441px){
-        #top form input{
-            width: 130px;
-        }
-    }
-    @media (max-width: 445px){
-        #top{
-            height: 65px;
-        }
-        #top form input{
-            width: 190px;
-        }
-        #top form{
-            position: absolute;
-            top: 25px;
-            right: 5px;
-        }
-    }
-    /* menu */
-    #menu{
-        margin-top: 40px;
-        background: #78d571;
-        z-index: 16;
-    }
-    #menu li a{
-        color: white;
-        text-shadow: 2px 2px 1px black;
-    }
-    @media (max-width: 445px){
-        #menu{
-            top: 25px;
-        }
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="../web/css/topo.css" />
+<script>
+    $(document).ready(function(){
+        $("#top form#busca").submit(function (){
+           var origem="procura";
+        });
+    });
+</script>
 <div id="top"><!-- carrinho de compra -->
     <div class="logo">
         <a href="#"><img src="../web/image/ass_e.png" height="40" alt=""/></a>
@@ -117,9 +20,8 @@
         <span><a href="#" data-toggle="modal" data-target="#login_modal">Entrar</a></span>
         <img src="../web/image/homem.png" alt="" height="20"/>
     </div><!-- entrar -->
-    <form action="../paginas/procura.php" method="post" id="busca" class="navbar-form">
-        <input placeholder="  O que você procura?" type="text" name="busca" />
-        <span><img src="../web/image/lupa.png" alt="" height="17" /></span>
+    <form action="../web/index.php?origem=procura" method="post" id="busca" class="navbar-form">
+        <input placeholder="  O que você procura?" type="text" name="busca" required/>                                          <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
     </form>
 </div><!-- carrinho de compra -->
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">

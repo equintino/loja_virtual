@@ -1,48 +1,11 @@
-<style>
-    .cadastro{
-        padding-bottom: 50px;
-    }
-    .cadastro h2{
-        margin-left: 40px;
-        text-shadow: 1px 1px 1px gray;
-        color: darkblue;
-    }
-    .cadastro form{
-        width: 90%;
-        margin: auto;
-        border: 1px solid gray;
-        background: rgba(0, 200, 0, 0.1);
-    }
-    .cadastro .botao{
-        float: right;
-    }
-    .form-horizontal{
-        padding: 0 20px;
-    }
-    .msg h3{
-        text-shadow: 1px 1px 1px gray;
-    }
-    .msg img{
-        position: relative;
-        float: right;
-        top: 10px;
-        right: 70px;
-        bottom: 2px;
-    }
-    @media (max-width: 768px){
-        .msg img{
-            top: 0;
-            padding-bottom: 30px;
-        }
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="../web/css/cadastro.css" />
 <?php
     $origem = array_key_exists("origem",$_GET)?$_GET['origem']:null;
     $login=Valida::getLogin();
 ?>
 <script>var login="<?= $login ?>";var origem="<?= $origem ?>"</script>
 <div class="container cadastro">
-    <?php if(!isset($_GET['origem'])): ?>
+    <?php if($origem!="login"): ?>
     <h2>Cadastro Pessoal</h2>
     <form action="../paginas/add.php" method="post">
     <div class="form-horizontal">
@@ -123,7 +86,7 @@
         </div>
     </div>
     </form>
-    <?php else: ?>
+    <?php elseif($origem=="login"): ?>
     <?php $confirma=array_key_exists("conf",$_GET)?$_GET['conf']:null; ?>
     <h2>Login de Acesso</h2>
     <form action="../paginas/add.php" method="post">

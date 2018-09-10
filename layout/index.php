@@ -101,6 +101,9 @@
             if(origem=="login"){
                 $(".tab-content div[id=home]").removeClass("active");
                 $(".tab-content div[id=cadastro]").addClass("active");
+            }else if(origem=="procura"){
+                $(".tab-content div[id=home]").removeClass("active");
+                $(".tab-content div[id=procura]").addClass("active");
             }
             $(document).click(function(){
                 //alert($(document).width());
@@ -129,6 +132,9 @@
                 </div>
                 <div class="tab-pane" id="cadastro">
                     <?php require_once "../paginas/cadastro.php"; ?>
+                </div>
+                <div class="tab-pane" id="procura">
+                    <?php require_once "../paginas/procura.php"; ?>
                 </div>
             </div><!-- tab-content -->
         </div><!-- content -->

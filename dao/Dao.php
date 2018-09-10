@@ -1,7 +1,6 @@
 <?php
 require_once "../dao/Config.php";
 require_once "../classes/Model.php";
-//require_once "../dao/CriterioProcuraPessoa.php";
 require_once "../excecao/Excecao.php";
 require_once "../mapping/ModelMapper.php";
 
@@ -11,20 +10,19 @@ class Dao{
     public function __destruct() {
         $this->db = null;
     }
-    public function encontre(CriterioProcuraPessoa $search){
-        $dados = array();
+    public function encontre(CriterioProcura $search){
         $sql = $this->getSql($search);
         $dados = $this->query($sql)->fetchAll();
-        if(count($dados) > 1){
+        //if(count($dados) > 1){
+        if($dados){
             foreach($dados as $row){
                 foreach($row as $key => $item){
-                    $dados[$row['id']][$key] = $item;
-                    /*$model = new Model();
-                    modelMapper::map($model, $row);
-                    $result[$model->getid()] = $model;*/
+                    $dados_[$row['id']][$key] = $item;
                 }
             }
-        }else{
+            return $dados_;
+        }
+        /*}else{
             if(count($dados) == 0){
                 return false;
             }
@@ -35,8 +33,7 @@ class Dao{
             $model->setCriado($row['criado']);
             $result[$row['id']] = $model;
             return $result;
-        }
-        return $dados;
+        }*/
     }
     public function grava(Model $model){
         if($model->getId() === null){
@@ -75,23 +72,27 @@ class Dao{
         $stmt = $this->getDb()->query($sql);
         return $stmt->fetchAll();
     }
-    private function getSql(CriterioProcuraPessoa $search=null){
+    private function getSql(CriterioProcura $search=null){
         if($search->getArray()){
             $sql = "SELECT * FROM ".$search->getTabela()." WHERE ";
             $x=count($search->getArray());
             foreach($search->getArray() as $key => $value){
                 if($x-- > 1){
-                    $sql .= "$key = '$value' AND ";
+                    $sql .= "$key like '%$value%' AND ";
                 }else{
-                    $sql .= "$key = '$value'";
+                    $sql .= "$key like '%$value%'";
                 }
             }
             return $sql;
         }
-        $sql = "SELECT * FROM ".$search->getTabela()." WHERE cpf = ".$search->getCpf();
+        if($search->getCpf()){
+            $sql = "SELECT * FROM ".$search->getTabela()." WHERE cpf = ".$search->getCpf();
+        }else{
+            $sql = "SELECT * FROM ".$search->getTabela();
+        }
         return $sql;
     }
-    private function insert(Model $model){
+    protected function insert(Model $model){
         date_default_timezone_set("America/Sao_Paulo");
         $model->setCriado(date('Y-m-d H:i:s'));
         $cols=$values=null;
@@ -103,7 +104,7 @@ class Dao{
         $this->criaTabela($model);
         return $this->execute($sql, $model);
     }
-    private function update(Model $model){
+    protected function update(Model $model){
         date_default_timezone_set("America/Sao_Paulo");
         $model->setModificado(date('Y-m-d H:i:s'));
         $cols=$values=null;
@@ -135,7 +136,7 @@ class Dao{
     private function criaTabela(Model $model){
         $sql = "CREATE TABLE IF NOT EXISTS `".$model->getTabela()."` ( `id` INT(5) NOT NULL AUTO_INCREMENT , `criado` datetime NOT NULL,`modificado` datetime NULL,";
         foreach($model->getArray() as $col => $value){
-            if($col != 'login' && $col != 'cpf'){
+            if($col != 'login' && $col != 'cpf' && $col != 'cod_produto'){
                 $sql .= "`$col` varchar(100) NULL, ";
             }else{
                 $sql .= "`$col` varchar(100) NULL UNIQUE, ";
@@ -155,20 +156,3 @@ class Dao{
         throw new Excecao('DB error [' . $errorInfo[0] . ', ' . $errorInfo[1] . ']: ' . $errorInfo[2]);
     }
 }
-/*
-echo '<pre>';
-$dao = new Dao();
-$model = new Model();
-$model->setTabela("tb_usuario");
-//$dao->grava($model);
-//print_r($dao->showDbMySQL());
-//print_r($dao->showTabelas());
-$search = new CriterioProcura();
-$search->setTabela("tb_usuario");
-$search->setLogin('edmilson');
-$dados=$dao->enconte($search);
-print_r($dados);*/
-
-/*$array = array('nome'=>'Edmilson Messias Quintino','email'=>'edmquintino@gmail.com','login'=>'edmilson','senha'=>'123');
-$model->setArray($array);
-print_r($dao->grava($model));*/

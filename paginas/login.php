@@ -11,7 +11,10 @@
     }
 </style>
 <?php
+require_once "../dao/Dao.php";
 require_once "../classes/login.php";
+require_once "../dao/CriterioProcura.php";
+require_once "../dao/BuscaDados.php";
 
 session_start();
 if(!array_key_exists("sair",$_POST)){

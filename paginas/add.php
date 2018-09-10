@@ -13,7 +13,7 @@
 <?php
 require_once "../dao/Dao.php";
 require_once "../classes/Model.php";
-require_once "../dao/CriterioProcuraPessoa.php";
+require_once "../dao/CriterioProcura.php";
 require_once "../mensagem/Mensagem.php";
 
 $origem = array_key_exists("origem", $_POST)?$_POST["origem"]:null;
@@ -21,7 +21,7 @@ $cpf = array_key_exists("cpf",$_POST)?$_POST["cpf"]:null;
 
 $dao = new Dao();
 $model = new Model();
-$search = new CriterioProcuraPessoa();
+$search = new CriterioProcura();
     
 if($origem=="cadastro"){
     $search->setTabela("tb_usuario");
@@ -54,8 +54,16 @@ if($origem=="cadastro"){
     $search->setArray(array("confirma"=>$confirma));
     if($row=$dao->encontre($search)){
         if($row){
-            foreach($row as $model){
-                $arr=($model->getArray());
+            foreach($row as $item){
+                foreach($item as $key => $value){
+                    $arr[$key]=$value;
+                }
+                /*$model->setArray($arr);
+                echo '<pre>';
+                print_r($arr);
+                print_r($model);die;
+                $arr=($model->getArray());*/
+                $model->setId($arr['id']);
                 $model->setTabela("tb_usuario");
                 $model->setArray(array_replace($arr,array('login'=>$login,'senha'=>$senha,'confirma'=>'ok')));
                 try{

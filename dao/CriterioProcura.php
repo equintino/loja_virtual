@@ -1,5 +1,5 @@
 <?php
-class CriterioProcuraPessoa {
+class CriterioProcura {
     private $tabela;
     private $login;
     private $nome;

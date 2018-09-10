@@ -1,16 +1,4 @@
-<style>
-    .contato .row{
-        width: 95%;
-        margin: 10px auto;
-    }
-    .contato button{
-        float: right;
-        margin-top: 5px;
-    }
-    .estamos{
-        text-align: center;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="../web/css/contato.css" />
 <div class="container contato" >
     <div class="row">
         <div class="col-md-6">

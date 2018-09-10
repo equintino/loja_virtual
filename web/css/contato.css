@@ -1,0 +1,11 @@
+.contato .row{
+    width: 95%;
+    margin: 10px auto;
+}
+.contato button{
+    float: right;
+    margin-top: 5px;
+}
+.estamos{
+    text-align: center;
+}
