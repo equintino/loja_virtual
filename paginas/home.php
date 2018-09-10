@@ -4,32 +4,26 @@
     $search = new CriterioProcura();
     $search->setTabela("tb_produto");   
     $dados=$dao->encontre($search);
-    /*if(count($dados) == 1){
-        if($dados){
-            foreach($dados as $item){
-                $vitrine = new Vitrine($item->getArray()['nome'], $item->getArray()['descricao'], $item->getArray()['imagem']);
-                $lista[]=$vitrine;
-            }
+    if($dados){
+        foreach($dados as $item){
+            $vitrine = new Vitrine($item['nome'], $item['descricao'], $item['imagem']);
+            $vitrine->setCod_produto($item['cod_produto']);
+            $vitrine->setDescricao($item['descricao']);
+            $vitrine->setValor($item['valor']);
+            $lista[]=$vitrine;
         }
-    }else{*/
-        if($dados){
-            foreach($dados as $item){
-                $vitrine = new Vitrine($item['nome'], $item['descricao'], $item['imagem']);
-                $lista[]=$vitrine;
-            }
-        }
-    //}
+    }
 ?>
 <div class="container carousel-fundo" id="tudo">
-    <?php if(isset($lista)): ?>
+    <?php if(isset($lista)): $itVit=count($lista)<4?count($lista):4;?>
     <div id="main-carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <?php for($x=0;$x<count($lista);$x++): ?>
+            <?php for($x=0;$x<$itVit;$x++): ?>
             <?php echo ($x==0)?'<li data-target="#main-carousel" data-slide-to="'.$x.'" class="active"></li>':'<li data-target="#main-carousel" data-slide-to="'.$x.'"></li>';
             endfor; ?>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <?php for($x=0;$x<count($lista);$x++): ?>
+            <?php for($x=0;$x<$itVit;$x++): ?>
             <?php echo ($x==0)?'<div class="item slider active">':'<div class="item slider">'; ?>
                 <div class="carousel-caption">
                     <h3><?= $lista[$x]->getTitulo() ?></h3>
@@ -52,22 +46,18 @@
         <div class="col-sm-4">A entrega é garantida</div>
         <div class="col-sm-4">Produtos de primeira linha</div>
     </div><!-- row -->
-    <?php
-        $dao = new Dao();
-        $search = new CriterioProcura();
-        $search->setTabela("tb_produto");
-        $produtos=$dao->encontre($search);
-        
-    ?>
     <div id="galeria">
         <div id="primeira" class="row">
             <?php 
-                foreach($produtos as $valor){
-                    $produto = new Produto($valor['cod_produto'], $valor['valor'], $valor['descricao']);
-                    $produto->setImagem($valor['imagem']);
-                    $galeria = new Galeria($produto);
-                    $galeria->setGaleria();
-                    echo $galeria->getGaleria();
+                if(isset($lista)){
+                    $ltGal=count($lista) < 12?count($lista):12;
+                    for($x=0;$x<$ltGal;$x++){
+                        $produto = new Produto($lista[$x]->getCod_produto(), $lista[$x]->getValor(), $lista[$x]->getDescricao());
+                        $produto->setImagem($lista[$x]->getImagem());
+                        $galeria = new Galeria($produto);
+                        $galeria->setGaleria();
+                        echo $galeria->getGaleria();
+                    }
                 }
             ?>
         </div><!-- id_primeira -->

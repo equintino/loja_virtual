@@ -76,22 +76,17 @@ $dados = $dao->encontre($search);
     <h2>Resultado de Busca</h2>
         <div>
         <?php 
-            $x=0;
-            //if(count($dados)>1){
             if(isset($busca)){
                 if(is_array($dados)){
                     foreach($dados as $item){
                         /* classificacao */
-                        if($x==0){
-                            foreach($daoVitrine->encontre($search) as $valor){
-                                $model->setTabela("tb_classifica");
-                                $model->setArray(array("pesquisado"=>$valor['pesquisado']+1));
-                                $model->setId($valor['id']);
-                                $model->setArray(array("cod_classifica"=>$valor['cod_produto'],"nota"=>$valor['nota'],"vendido"=>$valor['nota']));
-                                $daoVitrine->grava($model);
-                            }
+                        foreach($daoVitrine->encontre($search) as $valor){
+                            $nota = ($valor['vendido']+$valor['pesquisado'])/2;
+                            $model->setTabela("tb_classifica");
+                            $model->setId($valor['id']);
+                            $model->setArray(array("cod_classifica"=>$valor['cod_produto'],"nota"=>$nota,"vendido"=>$valor['nota'],"pesquisado"=>$valor['pesquisado']+1));
+                            $daoVitrine->grava($model);
                         }
-                        $x++;
 
                         $produto = new Produto($item['cod_produto'], $item['valor'] , $item['descricao']);
                         $produto->setImagem($item['imagem']);
@@ -99,26 +94,6 @@ $dados = $dao->encontre($search);
                         $galeria->setGaleria();
                         echo $galeria->getGaleria();
                     }
-                /*}else{
-                    if(is_array($dados)){
-                        foreach($dados as $item){
-                            if($x==0){
-                                foreach($daoVitrine->encontre($search) as $valor){
-                                    $model->setTabela("tb_classifica");
-                                    $model->setArray(array("pesquisado"=>$valor['pesquisado']+1));
-                                    $model->setId($valor['id']);
-                                    $model->setArray(array("cod_classifica"=>$valor['cod_produto'],"nota"=>$valor['nota'],"vendido"=>$valor['nota']));
-                                    $daoVitrine->grava($model);
-                                }
-                            }
-                            $x++;
-
-                            $produto = new Produto($item->getArray()['cod_produto'], $item->getArray()['valor'] , $item->getArray()['descricao']);
-                            $produto->setImagem($item->getArray()['imagem']);
-                            $galeria = new Galeria($produto);
-                            $galeria->setGaleria();
-                            echo $galeria->getGaleria();
-                        }*/
                 }else{
                     echo ' 
                     <div class="alert alert-info">
