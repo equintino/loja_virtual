@@ -1,17 +1,28 @@
 <link rel="stylesheet" type="text/css" href="../web/css/home.css" />
 <script>
     $(document).ready(function(){
+            var click=0;
+            $("#galeria .gal").find(".descricao, .prod").click(function(){
+                click=1;
+            });
+            /*$("#galeria .gal").find(".prod").click(function(){
+                click=1;
+            });*/
             $("#galeria .gal").click(function(){
                 var foto=$(this).find("span.prod img").attr("src");
+                var detProd=$(this).find(".descricao").attr("descricao");
+                var preco=$(this).find(".preco").text();
+                var html="<center>"+detProd+"<br><strong><font color=red size=6px>"+preco+"</font></strong><br><img src='"+foto+"' alt='' height=120/></center>";
                 if(login != "Entrar"){
-                    var texto=$(this).text();
-                    $(".confCompra").text(texto+"?").append("<br><center><img src='"+foto+"' alt='' height=120/></center>");
+                    $(".confCompra").html("<html>"+html+"</html>");
+                    //$(".confCompra").text(texto+"?").append("<br><center><img src='"+foto+"' alt='' height=120/></center>");
                     $("#prodModal form input[type=hidden]").val($(this).find(".descricao").attr("codProd"));
-                }else{
+                }else if(click==0){
                     alert("Só é possível realizar comprar após o login.");
                     $("#prodModal").attr("id","removido");
                 }
-                    
+                $("#textModal .modal-body").text(detProd);
+                click=0;
             });
     });
 </script>
@@ -23,6 +34,13 @@
     }
     .titVenda h3{
         text-shadow: 1px 1px 1px gray;
+    }
+    .gal .descricao:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #textModal .modal-header{
+        background: green;
     }
 </style>
 <?php
@@ -82,11 +100,11 @@
                     $produto->setImagem($lista[$x]->getImagem());
                 ?>
                     <div class="col-md-3 col-sm-4 col-xs-12 gal">
-                         <span class="prod"><img src="<?= $produto->getImagem() ?>" alt="" /></span>
-                         <div class="descricao" codProd='<?= $produto->getCodProduto() ?>'><?= $produto->getDescricao() ?></div>
+                         <span class="prod"><img src="<?= $produto->getImagem() ?>" alt="" data-toggle='modal' data-target='#textModal'/></span>
+                         <div class="descricao" codProd="<?= $produto->getCodProduto() ?>" data-toggle="modal" data-target="#textModal" descricao="<?= $produto->getDescricao() ?>"><?= substr($produto->getDescricao(),0,40)."..." ?></div>
                          <div class="preco">R$ <?= number_format($produto->getValorUnitario(),'2',',','.') ?></div>
                          <div class="ticket" data-toggle="modal" data-target="#prodModal">COMPRAR</div>
-                         <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26" /></span>
+                         <span class="imgCar" data-toggle="modal" data-target="#prodModal"><img src="../web/image/carrinho.png" alt="" height="26" /></span>
                     </div>
             <?php endfor; endif; ?>
         </div><!-- id_primeira -->
@@ -108,5 +126,19 @@
             </div>
             </form>
         </div>
+    </div>
+    <div class="modal fade" id="textModal" role='dialog'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+                    <h4>Detalhes do Produto</h4>
+                </div>
+                <div class='modal-body confCompra'></div>
+                <div class='modal-footer'>
+                    <button class='btn btn-success' data-dismiss='modal'>Close</button>
+                </div>
+            </div>
+        </div>        
     </div>
 </div><!-- container carousel -->

@@ -90,9 +90,16 @@ $dados = $dao->encontre($search);
 
                         $produto = new Produto($item['cod_produto'], $item['valor'] , $item['descricao']);
                         $produto->setImagem($item['imagem']);
-                        $galeria = new Galeria($produto);
-                        $galeria->setGaleria();
-                        echo $galeria->getGaleria();
+                        ?>                        
+                        <div class="col-md-3 col-sm-4 col-xs-12 gal">
+                            <span class="prod"><img src="<?= $produto->getImagem() ?>" alt="" /></span>
+                            <div class="descricao" codProd="<?= $produto->getCodProduto() ?>" data-toggle="modal" data-target="#textModal" descricao="<?= $produto->getDescricao() ?>"><?= substr($produto->getDescricao(),0,40)."..." ?></div>
+                            <div class="preco">R$ <?= number_format($produto->getValorUnitario(),'2',',','.') ?></div>
+                            <div class="ticket" data-toggle="modal" data-target="#prodModal">COMPRAR</div>
+                            <span class="imgCar" data-toggle="modal" data-target="#prodModal"><img src="../web/image/carrinho.png" alt="" height="26" /></span>
+                        </div>
+                        
+                     <?php   
                     }
                 }else{
                     echo ' 
