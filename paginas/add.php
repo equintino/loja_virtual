@@ -22,6 +22,8 @@ $cpf = array_key_exists("cpf",$_POST)?$_POST["cpf"]:null;
 $dao = new Dao();
 $model = new Model();
 $search = new CriterioProcura();
+echo '<pre>';
+print_r($_POST);
     
 if($origem=="cadastro"){
     $search->setTabela("tb_usuario");

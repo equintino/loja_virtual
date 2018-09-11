@@ -29,14 +29,7 @@ class Galeria{
     public function setVitrine($vt) {
         $this->vitrine = $vt;
     }
-    public function setGaleria() {
-        $gal='<div class="col-md-3 col-sm-4 col-xs-12 gal">
-             <span class="prod"><img src="'.$this->getImagem().'" alt="" /></span>
-             <div class="descricao" codProd='.$this->getCodProduto().'>'.$this->getDescricao().'</div>
-             <div class="preco">R$ '.number_format($this->getValorUnitario(),'2',',','.').'</div>
-             <div class="ticket" data-toggle="modal" data-target="#prodModal">COMPRAR</div>
-             <span class="imgCar"><img src="../web/image/carrinho.png" alt="" height="26" /></span>
-        </div>';
+    public function setGaleria($gal) {
         $this->galeria = $gal;
     }
     public function getCodProduto() {
